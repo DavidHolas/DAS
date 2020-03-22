@@ -1,0 +1,33 @@
+.Board {
+    background-color: grey;
+    margin: 0;
+    height: 600px;
+  }
+
+  .roll_btn {
+    display: block;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .Board_diceCount {
+      font-size: 50px;
+  }
+
+  .Board_row {
+    margin-top: 50px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .Board_square {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border: 2px solid #000;
+  }
+
+  .Board_square:hover {
+    background-color: rgb(0, 128, 248);
+  }

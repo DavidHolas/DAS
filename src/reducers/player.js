@@ -10,67 +10,78 @@
                 id: 0,
                 name:"Start",
                 isPlayer: true,
-                cost: -4000
+                cost: null,
+                owner: null
             },
             {
                 id: 1,
                 name:"Furioso", 
                 isPlayer: false,
-                cost: 500
+                cost: 500,
+                owner: null
             },
             {
                 id: 2, 
                 name:"Finance", 
                 isPlayer: false,
-                cost: null
+                cost: null,
+                owner: null
             },
             {
                 id: 3, 
                 name:"Trenér", 
                 isPlayer: false,
-                cost: 4000
+                cost: 4000,
+                owner: null
             },
             {
                 id: 4,
                 name:"Japan",
                 isPlayer: false,
-                cost: 1000
+                cost: 1000,
+                owner: null
             },
             {
                 id: 5,
                 name:"Neklan", 
                 isPlayer: false,
-                cost: 1500
+                cost: 1500,
+                owner: null
             },
             {
                 id: 6, 
                 name:"Náhoda", 
                 isPlayer: false,
-                cost: null
+                cost: null,
+                owner: null
             },
             {
                 id: 7, 
                 name:"Trenér", 
                 isPlayer: false,
-                cost: 4000
+                cost: 4000,
+                owner: null
             },
             {
                 id: 8, 
                 name:"Narcius", 
                 isPlayer: false,
-                cost: 2500
+                cost: 2500,
+                owner: null
             },
             {
                 id: 9, 
                 name:"Napoli", 
                 isPlayer: false,
-                cost: 10000
+                cost: 10000,
+                owner: null
             },
             {
                 id: 10, 
                 name:"Distanc", 
                 isPlayer: false,
-                cost: null
+                cost: null,
+                owner: null
             }]
 };
 

@@ -9,28 +9,7 @@ class Board extends Component {
     state = {
         dice: 0,
         player_position: 0,
-        log: [],
-        test: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39]
-    }
-
-    renderPart1 = () => {
-        const row = this.state.test.slice(0,10);
-        row.map(s => { return <Square className="Board_square" id={s} name="test" />});
-    }
-
-    renderPart2 = () => {
-        const row = this.state.test.slice(10,20);
-        row.map(s => { return <Square className="Board_square" name="test" />});
-    }
-
-    renderPart3 = () => {
-        const row = this.state.test.slice(20,30);
-        row.map(s => { return <Square className="Board_square" name="test" />});
-    }
-
-    renderPart4 = () => {
-        const row = this.state.test.slice(30,39);
-        row.map(s => { return <Square className="Board_square" name="test" />});
+        log: []
     }
 
     addLogMessage = (message) => {
@@ -66,7 +45,6 @@ class Board extends Component {
         if(roundFinished) {
             this.props.onPayMoney(-4000);
             this.addLogMessage("Player 1 got 4000 for completing round");
-            this.roundFinished = false;
         }
 
         if (square.owner === null && square.cost != null) {
@@ -77,37 +55,67 @@ class Board extends Component {
     }
 
   render() {
+
+    const {squares} = this.props;
+
+    const part1 = squares.slice(0,10);
+    const part2 = squares.slice(10,20);
+    const part3 = squares.slice(20,30);
+    const part4 = squares.slice(30,40);
+
     return (
         <div className="Board">
 
           <p className="Board_diceCount">{this.state.dice}</p>
-          <button className="roll_btn" onClick={this.rollDice}>Hoď kostkou</button>
           <button className="roll_btn" onClick={this.refreshPage}>Hraj znovu</button>
-          
-          <div className="Board_row">
-            {this.props.squares ? this.props.squares.map(sq => { 
-            return <Square 
-                className="Board_square" 
-                key={sq.id} 
-                id={sq.id}
-                name={sq.name} 
-                isPlayer={sq.isPlayer}></Square> }) : <p>Nemáš hrací plochu</p>}
-          </div>
 
-            <p className="Board_diceCount">{this.props.money}</p>
-
+        {/*
             <button className="roll_btn" onClick={this.deleteLog}>Smaž zprávy</button>
             {this.state.log.map(m => {
                 return <p>{m}</p>
             })}
+        */}
 
+        <button className="roll_btn" onClick={this.rollDice}>Hoď kostkou</button>
+
+            <div className="Board_container">
             <div className="Board_row">
-                {this.renderPart1}
-                {this.renderPart2}
-                {this.renderPart3}
-                {this.renderPart4}
+                {part1.map(sq => { 
+                return <Square 
+                className="Board_square" 
+                key={sq.id} 
+                id={sq.id}
+                name={sq.name} 
+                isPlayer={sq.isPlayer}></Square> })}
             </div>
-            
+            <div className="Board_column_right">
+                {part2.map(sq => { 
+                return <Square 
+                className="Board_square" 
+                key={sq.id} 
+                id={sq.id}
+                name={sq.name} 
+                isPlayer={sq.isPlayer}></Square> })}
+            </div>
+            <div className="Board_column">
+                {part4.map(sq => { 
+                return <Square 
+                className="Board_square" 
+                key={sq.id} 
+                id={sq.id}
+                name={sq.name} 
+                isPlayer={sq.isPlayer}></Square> })}
+            </div>
+            <div className="Board_row_reverse">
+                {part3.map(sq => { 
+                return <Square 
+                className="Board_square" 
+                key={sq.id} 
+                id={sq.id}
+                name={sq.name} 
+                isPlayer={sq.isPlayer}></Square> })}
+            </div>
+            </div>
 
         </div>
     );

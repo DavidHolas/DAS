@@ -1,7 +1,7 @@
 .Board {
     background-color: grey;
     margin: 0;
-    height: 2000px;
+    height: 100%;
   }
 
   .roll_btn {
@@ -14,16 +14,43 @@
       font-size: 50px;
   }
 
+  .Board_container {
+      border-radius: 10%;
+      margin: auto;
+      width: 90%;
+      height: 1000px;
+  }
+
   .Board_row {
-    margin-top: 50px;
-    margin-left: 50px;
+    height: 100px;
     display: flex;
     flex-direction: row;
   }
 
+  .Board_row_reverse {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .Board_column {
+    width: 150px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .Board_column_right {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+  }
+
   .Board_square {
-    width: 100px;
-    height: 100px;
+    border-radius: 10px;
+    min-width: 120px;
+    min-height: 80px;
+    width: 100%;
+    height: 100%;
     background-color: blue;
     border: 2px solid #000;
   }

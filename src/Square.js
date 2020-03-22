@@ -7,7 +7,7 @@ const Square = (props) => {
     <div className="Board_square">
         <div>
             {props.name}
-            {props.isPlayer ? <p>Player 1</p> : null}
+            {props.isPlayer ? <p><b>Player 1</b></p> : null}
         </div>
     </div>
     )}

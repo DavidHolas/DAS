@@ -1,88 +1,12 @@
+  import squaresArray from "../Squares";
+  
   const initialState = {
         dice: 0,
         money: 20000,
         players: [
         {id: 98, name: "David", money: 40000, position: 0},
         {id: 99, name: "Ivetka", money: 100, position: 0}],
-
-        squares: [
-            {
-                id: 0,
-                name:"Start",
-                isPlayer: true,
-                cost: null,
-                owner: null
-            },
-            {
-                id: 1,
-                name:"Furioso", 
-                isPlayer: false,
-                cost: 500,
-                owner: null
-            },
-            {
-                id: 2, 
-                name:"Finance", 
-                isPlayer: false,
-                cost: null,
-                owner: null
-            },
-            {
-                id: 3, 
-                name:"Trenér", 
-                isPlayer: false,
-                cost: 4000,
-                owner: null
-            },
-            {
-                id: 4,
-                name:"Japan",
-                isPlayer: false,
-                cost: 1000,
-                owner: null
-            },
-            {
-                id: 5,
-                name:"Neklan", 
-                isPlayer: false,
-                cost: 1500,
-                owner: null
-            },
-            {
-                id: 6, 
-                name:"Náhoda", 
-                isPlayer: false,
-                cost: null,
-                owner: null
-            },
-            {
-                id: 7, 
-                name:"Trenér", 
-                isPlayer: false,
-                cost: 4000,
-                owner: null
-            },
-            {
-                id: 8, 
-                name:"Narcius", 
-                isPlayer: false,
-                cost: 2500,
-                owner: null
-            },
-            {
-                id: 9, 
-                name:"Napoli", 
-                isPlayer: false,
-                cost: 10000,
-                owner: null
-            },
-            {
-                id: 10, 
-                name:"Distanc", 
-                isPlayer: false,
-                cost: null,
-                owner: null
-            }]
+        squares: squaresArray
 };
 
 let idCount = 0;

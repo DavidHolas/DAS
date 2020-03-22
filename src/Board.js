@@ -57,8 +57,8 @@ class Board extends Component {
         const { squares } = this.props;
         const position_old = this.state.player_position;
         const roundFinished = position_old + distance >= squares.length;
-
         const position_new = roundFinished ? (position_old + distance) - squares.length : position_old + distance;
+        const square = squares[position_new];
 
         this.setState({ player_position: position_new });
         this.props.onToggleIsPlayer(position_old);
@@ -69,10 +69,10 @@ class Board extends Component {
             this.roundFinished = false;
         }
 
-        if (squares[position_new].cost != null) {
-            this.props.onPayMoney(squares[position_new].cost);
-            this.addLogMessage("Player 1 paid " + squares[position_new].cost + " for " + squares[position_new].name);
-
+        if (square.owner === null && square.cost != null) {
+            this.props.onPayMoney(square.cost);
+            this.addLogMessage("Player 1 paid " + square.cost + " for " + square.name);
+            this.props.onAddOwner(square.id)
         }
     }
 
@@ -128,7 +128,8 @@ const mapDispatchToProps = dispatch => {
       onRemovePlayer: (id) => dispatch({type: 'REMOVE_PLAYER', id}),
       onMovePlayer: (id, distance) => dispatch({type: 'MOVE', id, distance}),
       onToggleIsPlayer: (id) => dispatch({type: 'TOGGLE_ISPLAYER', id}),
-      onPayMoney: (cost) => dispatch({type: 'PAY_MONEY', cost})
+      onPayMoney: (cost) => dispatch({type: 'PAY_MONEY', cost}),
+      onAddOwner: (id) => dispatch({type: 'ADD_OWNER', id})
 }
 }
 

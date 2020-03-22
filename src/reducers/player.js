@@ -103,6 +103,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 money: state.money - action.cost
         }
+        case 'ADD_OWNER':
+            return { ...state,
+                squares: state.squares.map(square => {
+                    if (square.id === action.id) {
+                    return { ...square, owner: "Player1" };
+                }
+            return square;
+        })};
         case 'ADD_PLAYER':
             return {
                 ...state,

@@ -4,7 +4,7 @@ import "./Board.css";
 
 const Square = (props) => {
     return(
-    <div className="Board_square">
+    <div onClick={props.operModal} className="Board_square">
         <div>
             {props.name}
             {props.isPlayer ? <p><b>Player 1</b></p> : null}

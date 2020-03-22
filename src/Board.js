@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Board.css';
 import Square from "./Square";
+import Modal from "./Modal";
 
 import { connect } from 'react-redux';
 
@@ -9,7 +10,8 @@ class Board extends Component {
     state = {
         dice: 0,
         player_position: 0,
-        log: []
+        log: [],
+        modal: false
     }
 
     addLogMessage = (message) => {
@@ -42,6 +44,7 @@ class Board extends Component {
         this.setState({ player_position: position_new });
         this.props.onToggleIsPlayer(position_old);
         this.props.onToggleIsPlayer(position_new);
+        
         if(roundFinished) {
             this.props.onPayMoney(-4000);
             this.addLogMessage("Player 1 got 4000 for completing round");
@@ -52,6 +55,18 @@ class Board extends Component {
             this.addLogMessage("Player 1 paid " + square.cost + " for " + square.name);
             this.props.onAddOwner(square.id)
         }
+    }
+
+    openModal = () => {
+        this.setState({modal: true})
+    }
+
+    closeModal = () => {
+        this.setState({modal: false})
+    }
+
+    renderModal = (text) => {
+        return <Modal close={this.closeModal} visible={this.state.modal} text={text} />
     }
 
   render() {
@@ -66,10 +81,13 @@ class Board extends Component {
     return (
         <div className="Board">
 
-          <p className="Board_diceCount">{this.state.dice}</p>
-          <button className="roll_btn" onClick={this.refreshPage}>Hraj znovu</button>
+        {this.renderModal()}
 
-        {/*
+        <button className="roll_btn" onClick={this.openModal}>Modal</button>
+{/*
+        <button className="roll_btn" onClick={this.refreshPage}>Hraj znovu</button>
+
+        
             <button className="roll_btn" onClick={this.deleteLog}>Smaž zprávy</button>
             {this.state.log.map(m => {
                 return <p>{m}</p>
@@ -82,7 +100,8 @@ class Board extends Component {
             <div className="Board_row">
                 {part1.map(sq => { 
                 return <Square 
-                className="Board_square" 
+                className="Board_square"
+                operModal={this.openModal} 
                 key={sq.id} 
                 id={sq.id}
                 name={sq.name} 
@@ -91,7 +110,8 @@ class Board extends Component {
             <div className="Board_column_right">
                 {part2.map(sq => { 
                 return <Square 
-                className="Board_square" 
+                className="Board_square"
+                operModal={this.openModal} 
                 key={sq.id} 
                 id={sq.id}
                 name={sq.name} 
@@ -100,7 +120,8 @@ class Board extends Component {
             <div className="Board_column">
                 {part4.map(sq => { 
                 return <Square 
-                className="Board_square" 
+                className="Board_square"
+                operModal={this.openModal} 
                 key={sq.id} 
                 id={sq.id}
                 name={sq.name} 
@@ -109,7 +130,8 @@ class Board extends Component {
             <div className="Board_row_reverse">
                 {part3.map(sq => { 
                 return <Square 
-                className="Board_square" 
+                className="Board_square"
+                operModal={this.openModal} 
                 key={sq.id} 
                 id={sq.id}
                 name={sq.name} 
